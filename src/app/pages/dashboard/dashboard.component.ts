@@ -16,11 +16,11 @@ export class DashboardComponent {
    */
   constructor(private topicsService: TopicServiceService) {}
 
-  results: dashboardResult[] = [];
+  _results: dashboardResult[] = [];
 
   ngOnInit() {
-    this.topicsService.search('fruits').subscribe((results) => {
-      this.results = results;
-    });
+    this.topicsService
+      .getResults()
+      .subscribe((results) => (this._results = results));
   }
 }
